@@ -1,0 +1,24 @@
+<h1>Listing methoods</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @methoods.each do |methood| %>
+      <tr>
+        <td><%= method.name %></td>
+        <td><%= link_to 'Show', methood %></td>
+        <td><%= link_to 'Edit', edit_methood_path(methood) %></td>
+        <td><%= link_to 'Destroy', methood, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Methood', new_methood_path %>
