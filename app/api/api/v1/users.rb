@@ -7,6 +7,15 @@ module API::V1
       get '/' do
         User.all
       end
+
+      desc "check for valid user"
+      params do
+        requires :email, type: String
+        requires :password, type: String
+      end
+      get '/' do
+        u = User.authenticate(params[:email], params[:password])  
+      end
     end
   end
 end
