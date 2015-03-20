@@ -33,7 +33,7 @@ module API::V1
       get '/' do
         u = User.authenticate(params[:email], params[:password])
         if !u.nil?
-          p = u.projects(name: params[:name])
+          p = u.projects(name: params[:name]).first
           if !p.nil?
             return p.guid
           end
