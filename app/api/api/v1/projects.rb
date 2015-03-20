@@ -22,5 +22,23 @@ module API::V1
         end
       end
     end
+
+    resource :getprojectguid do
+    desc "get a project via name and user"
+      params do
+        requires :name, type: String
+        requires :email, type: String
+        requires :password, type: String
+      end
+      get '/' do
+        u = User.authenticate(params[:email], params[:password])
+        if !u.nil?
+          p = u.projects(name: params[:name])
+          if !p.nil?
+            p.guid
+          end
+        end  
+      end
+    end
   end
 end

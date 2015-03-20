@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :method_result_sets
+
+  resources :klass_result_sets
+
   resources :methoods
 
   resources :klasses

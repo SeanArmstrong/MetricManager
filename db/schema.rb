@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319112108) do
+ActiveRecord::Schema.define(version: 20150320184132) do
 
-  create_table "klasses", force: true do |t|
+  create_table "klass_result_sets", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.string   "package"
+    t.integer  "klass_id"
     t.integer  "variables"
     t.integer  "public_variables"
     t.integer  "protected_variables"
@@ -30,15 +29,28 @@ ActiveRecord::Schema.define(version: 20150319112108) do
     t.integer  "depth_of_inheritance"
     t.float    "LCOM"
     t.float    "CBO"
+  end
+
+  create_table "klasses", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "package"
     t.integer  "project_id"
+  end
+
+  create_table "method_result_sets", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "method_id"
+    t.integer  "number_of_lines"
+    t.integer  "complexity"
   end
 
   create_table "methoods", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.integer  "number_of_lines"
-    t.integer  "complexity"
     t.string   "return_type"
     t.integer  "klass_id"
   end
