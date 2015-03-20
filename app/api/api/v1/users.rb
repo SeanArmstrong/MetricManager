@@ -15,6 +15,8 @@ module API::V1
       end
       get '/' do
         u = User.authenticate(params[:email], params[:password])  
+        return true if !u.nil?
+        return false
       end
     end
   end

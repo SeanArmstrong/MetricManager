@@ -35,8 +35,23 @@ module API::V1
         if !u.nil?
           p = u.projects(name: params[:name])
           if !p.nil?
-            p.guid
+            return p.guid
           end
+        end  
+      end
+    end
+
+    resource :getprojectbyname do
+    desc "get a project via name and user"
+      params do
+        requires :name, type: String
+        requires :email, type: String
+        requires :password, type: String
+      end
+      get '/' do
+        u = User.authenticate(params[:email], params[:password])
+        if !u.nil?
+          return u.projects(name: params[:name])
         end  
       end
     end
