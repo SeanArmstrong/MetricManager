@@ -3,10 +3,10 @@ module API::V1
     format 'json'
 
     resource :users do
-      desc "Return list of users"
-      get '/' do
-        User.all
-      end
+#      desc "Return list of users"
+#      get '/' do
+#        User.all
+#      end
 
       desc "check for valid user"
       params do
