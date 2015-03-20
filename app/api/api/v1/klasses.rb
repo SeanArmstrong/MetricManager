@@ -3,13 +3,8 @@ module API::V1
     format 'json'
 
     resource :klasses do
-      desc "Return list of users"
-      get '/' do
-        Klass.all
-      end
 
-
-      desc "Post a new Klass"
+      desc "Post a new result set for class"
       params do
         requires :email, type: String
         requires :password, type: String
@@ -36,10 +31,14 @@ module API::V1
         if !u.nil?
           p = u.projects(guid: params[:guid]).first 
           if !p.nil?
-            Klass.create(
-                        name: params[:name],
-                        project_id: p.id,
-                        package: params[:package],
+
+            k = p.klasses(name: params[:name]).first  
+            if k.nil?
+              k = Klass.create(name: params[:name], package: params[:package], project_id: p.id)
+            end
+
+            KlassResultSet.create(
+                        klass_id: k.id,
                         variables: params[:variables],
                         public_variables: params[:public_variables],
                         protected_variables: params[:protected_variables],
