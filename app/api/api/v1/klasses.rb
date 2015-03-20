@@ -4,6 +4,23 @@ module API::V1
 
     resource :klasses do
 
+      desc "Get class id"
+      params do
+        requires :email, type: String
+        requires :password, type: String
+        requires :project_guid, type: String
+        requires :name, type: String
+      end
+      get '/' do
+        u = User.authenticate(params[:email], params[:password])
+        if !u.nil?
+          p = u.projects(guid: params[:guid]).first 
+          if !p.nil?
+            return p.klasses(name: params[:name]).first.id  
+          end
+        end
+      end
+
       desc "Post a new result set for class"
       params do
         requires :email, type: String
