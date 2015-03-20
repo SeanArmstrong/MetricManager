@@ -12,9 +12,14 @@ module API::V1
       desc "Post a new project"
       params do
         requires :name, type: String
+        requires :email, type: String
+        requires :password, type: String
       end
       post '/' do
-        Project.create(name: params[:name], user_id: 1)
+        u = User.authenticate(params[:email], params[:password])
+        if !u.nil?
+            Project.create(name: params[:name], user_id: u.id) 
+        end
       end
     end
   end
