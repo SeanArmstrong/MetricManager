@@ -14,7 +14,7 @@ module API::V1
       get '/' do
         u = User.authenticate(params[:email], params[:password])
         if !u.nil?
-          p = u.projects.find_by(guid: params[:guid])
+          p = u.projects.find_by(guid: params[:project_guid])
           if !p.nil?
             return p.klasses.find_by(name: params[:name]).id  
           end
