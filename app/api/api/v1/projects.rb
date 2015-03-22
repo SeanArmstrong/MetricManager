@@ -33,7 +33,7 @@ module API::V1
       get '/' do
         u = User.authenticate(params[:email], params[:password])
         if !u.nil?
-          p = u.projects(name: params[:name]).first
+          p = u.projects.find_by(name: params[:name])
           if !p.nil?
             return p.guid
           end
@@ -51,7 +51,7 @@ module API::V1
       get '/' do
         u = User.authenticate(params[:email], params[:password])
         if !u.nil?
-          return u.projects(name: params[:name])
+          return u.projects.find_by(name: params[:name])
         end  
       end
     end

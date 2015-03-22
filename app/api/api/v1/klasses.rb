@@ -14,9 +14,9 @@ module API::V1
       get '/' do
         u = User.authenticate(params[:email], params[:password])
         if !u.nil?
-          p = u.projects(guid: params[:guid]).first 
+          p = u.projects.find_by(guid: params[:guid])
           if !p.nil?
-            return p.klasses(name: params[:name]).first.id  
+            return p.klasses.find_by(name: params[:name]).id  
           end
         end
       end
@@ -46,10 +46,9 @@ module API::V1
       post '/' do
         u = User.authenticate(params[:email], params[:password])
         if !u.nil?
-          p = u.projects(guid: params[:guid]).first 
+          p = u.projects.find_by(guid: params[:project_guid])
           if !p.nil?
-
-            k = p.klasses(name: params[:name]).first  
+            k = p.klasses.find_by(name: params[:name])
             if k.nil?
               k = Klass.create(name: params[:name], package: params[:package], project_id: p.id)
             end

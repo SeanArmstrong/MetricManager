@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
 
   def self.authenticate(email, password)
     user = User.find_for_authentication(:email => email)
-    user.valid_password?(password) ? user : nil
+    if user.present?
+      user.valid_password?(password) ? user : nil
+    else
+      nil 
+    end
   end
 end
