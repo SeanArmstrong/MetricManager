@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320184132) do
+ActiveRecord::Schema.define(version: 20150323180946) do
 
   create_table "klass_result_sets", force: true do |t|
     t.datetime "created_at"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150320184132) do
     t.integer  "depth_of_inheritance"
     t.float    "LCOM"
     t.float    "CBO"
+    t.string   "upload_guid"
   end
 
   create_table "klasses", force: true do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150320184132) do
     t.integer  "method_id"
     t.integer  "number_of_lines"
     t.integer  "complexity"
+    t.string   "upload_guid"
   end
 
   create_table "methoods", force: true do |t|

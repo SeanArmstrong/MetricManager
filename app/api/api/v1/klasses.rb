@@ -42,6 +42,8 @@ module API::V1
         requires :depth_of_inheritance, type: Integer 
         requires :lcom, type: Float 
         requires :cbo, type: Float 
+
+        requires :upload_guid, type: String
       end
       post '/' do
         u = User.authenticate(params[:email], params[:password])
@@ -66,7 +68,8 @@ module API::V1
                         weighted_methods_per_class: params[:weighted_methods_per_class],
                         depth_of_inheritance: params[:depth_of_inheritance],
                         LCOM: params[:lcom],
-                        CBO: params[:cbo])
+                        CBO: params[:cbo],
+                        upload_guid: params[:upload_guid])
           end
         end
       end

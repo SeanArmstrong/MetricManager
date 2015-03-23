@@ -16,6 +16,8 @@ module API::V1
 
         requires :number_of_lines, type: Integer
         requires :complexity, type: Integer
+
+        requires :upload_guid, type: String
       end
       post '/' do
         u = User.authenticate(params[:email], params[:password])
@@ -29,7 +31,10 @@ module API::V1
               if m.nil?
                 m = Methood.create(name: params[:name], klass_id: k.id)
               end
-              MethodResultSet.create(method_id: m.id, number_of_lines: params[:number_of_lines], complexity: params[:complexity])
+              MethodResultSet.create(method_id: m.id,
+                                      number_of_lines: params[:number_of_lines],
+                                      complexity: params[:complexity],
+                                      upload_guid: params[:upload_guid])
             else
               "Can't Find Klass"
             end
