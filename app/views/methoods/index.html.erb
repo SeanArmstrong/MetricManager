@@ -8,17 +8,13 @@
   </thead>
 
   <tbody>
-    <% @methoods.each do |methood| %>
+    <% @methoods.each do |method| %>
       <tr>
         <td><%= method.name %></td>
-        <td><%= link_to 'Show', methood %></td>
-        <td><%= link_to 'Edit', edit_methood_path(methood) %></td>
-        <td><%= link_to 'Destroy', methood, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', method_path(method.klass.project.id, method.klass.id, method.id) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Methood', new_methood_path %>

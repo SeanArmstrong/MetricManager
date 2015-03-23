@@ -8,7 +8,6 @@ class Project < ActiveRecord::Base
   
   before_create :add_guid
 
-
   private
   
   def add_guid

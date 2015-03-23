@@ -1,15 +1,19 @@
 class MethoodsController < ApplicationController
   before_action :set_methood, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
-    @methoods = Methood.all
+    @methoods = current_user.projects.find_by_id(params[:pid]).klasses.find_by_id(params[:kid]).methoods
     respond_with(@methoods)
   end
 
   def show
-    respond_with(@methood)
+    if @methood.present?
+      respond_with(@methood)
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -38,7 +42,7 @@ class MethoodsController < ApplicationController
 
   private
     def set_methood
-      @methood = Methood.find(params[:id])
+      @methood = current_user.projects.find_by_id(params[:pid]).klasses.find_by_id(params[:kid]).methoods.find_by_id(params[:mid])
     end
 
     def methood_params

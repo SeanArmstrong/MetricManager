@@ -4,12 +4,16 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
     respond_with(@projects)
   end
 
-  def show
-    respond_with(@project)
+  def show 
+    if @project.present?
+      respond_with(@project)
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -38,7 +42,7 @@ class ProjectsController < ApplicationController
 
   private
     def set_project
-      @project = Project.find(params[:id])
+      @project = current_user.projects.find_by_id(params[:id])
     end
 
     def project_params

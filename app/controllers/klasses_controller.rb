@@ -4,12 +4,14 @@ class KlassesController < ApplicationController
   respond_to :html
 
   def index
-    @klasses = Klass.all
+    @klasses = current_user.projects.find_by_id(params[:pid]).klasses
     respond_with(@klasses)
   end
 
   def show
-    respond_with(@klass)
+    if @klass.present?
+      respond_with(@klass)
+    end
   end
 
   def new
@@ -38,7 +40,7 @@ class KlassesController < ApplicationController
 
   private
     def set_klass
-      @klass = Klass.find(params[:id])
+      @klass = current_user.projects.find_by_id(params[:pid]).klasses.find_by_id(params[:kid])
     end
 
     def klass_params

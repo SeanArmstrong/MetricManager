@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
-  resources :method_result_sets
-
-  resources :klass_result_sets
-
-  resources :methoods
-
-  resources :klasses
-
   resources :projects
 
   mount API::Root => '/'
 
   devise_for :users
+
+  root 'projects#index'
+  get 'projects/:pid/classes', to: 'klasses#index', as: 'klasses'
+  get 'projects/:pid/classes/:kid', to: 'klasses#show', as: 'klass'
+  get 'projects/:pid/classes/:kid/methods', to:'methoods#index', as: 'methods'
+  get 'projects/:pid/classes/:kid/methods/:mid', to: 'methoods#show', as: 'method'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
