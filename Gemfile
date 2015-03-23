@@ -4,6 +4,7 @@ gem 'rails', '4.1.4'
 gem 'sqlite3', group: :development
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '>= 3.2'
+gem 'font-awesome-sass', '~> 4.3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'grape'
