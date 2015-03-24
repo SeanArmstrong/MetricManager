@@ -1,0 +1,39 @@
+<h4>Result Sets</h4>
+<table class="table table-striped table-hover" id="entrytable">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Variables</th>
+      <th>Public</th>
+      <th>Protected</th>
+      <th>Private</th>
+      <th>Lines</th>
+      <th>Methods</th>
+      <th>Lines Per Methods</th>
+      <th>AMC</th>
+      <th>WMC</th>
+      <th>DOI</th>
+      <th>LCOM</th>
+      <th>CBO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @klass.klass_result_sets.each do |set| %>
+      <tr>
+        <td><%= set.created_at.strftime("%d %b. %Y") %></td>
+        <td><%= set.variables%></td>
+        <td><%= set.public_variables %></td>
+        <td><%= set.protected_variables %></td>
+        <td><%= set.private_variables %></td>
+        <td><%= set.number_of_lines %></td>
+        <td><%= set.number_of_methods %></td>
+        <td><%= set.average_lines_per_method%></td>
+        <td><%= set.average_method_complexity %></td>
+        <td><%= set.weighted_methods_per_class%></td>
+        <td><%= set.depth_of_inheritance%></td>
+        <td><%= set.LCOM%></td>
+        <td><%= set.CBO%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
