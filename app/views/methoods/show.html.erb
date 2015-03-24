@@ -1,4 +1,18 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Method Profile: <%= @methood.name %></h3>
+<% if @methood.method_result_sets.any? %>
 
-<%= link_to 'Back', methods_path %>
+  <%= render "methoods/partials/latest_figures.html.erb" %>
+  <br>
+  <hr>
+  <%= render "methoods/partials/history.html.erb" %>
+  <hr>
+  <br>
+  <%= render "methoods/partials/result_sets.html.erb" %>
+
+<% else %>
+Nope
+
+<% end %>
+<br>

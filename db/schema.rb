@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323180946) do
+ActiveRecord::Schema.define(version: 20150324164646) do
 
   create_table "klass_result_sets", force: true do |t|
     t.datetime "created_at"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150323180946) do
   create_table "method_result_sets", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "method_id"
+    t.integer  "methood_id"
     t.integer  "number_of_lines"
     t.integer  "complexity"
     t.string   "upload_guid"

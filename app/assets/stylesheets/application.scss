@@ -3,15 +3,13 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
-.dl-horizontal{
+.dl-lower-me {
   padding-top: 100px;
+  dt {
+    width: 45%;
+  }
 }
 
 .dl-horizontal dt{
   text-align: left;
-  width: 45%;
 }
-
-.dl-horizontal dd{
-}
-

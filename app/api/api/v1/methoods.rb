@@ -31,7 +31,7 @@ module API::V1
               if m.nil?
                 m = Methood.create(name: params[:name], klass_id: k.id)
               end
-              MethodResultSet.create(method_id: m.id,
+              MethodResultSet.create(methood_id: m.id,
                                       number_of_lines: params[:number_of_lines],
                                       complexity: params[:complexity],
                                       upload_guid: params[:upload_guid])
