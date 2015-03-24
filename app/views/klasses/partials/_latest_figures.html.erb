@@ -1,0 +1,42 @@
+<h4>Latest figures</h4>
+<% latest_figures = @klass.klass_result_sets.last %>
+<div class="row">
+ <div class="col-md-4">
+    <dl class="dl-horizontal">
+      <dt>Variables: <dt>
+      <dd><%= latest_figures.variables %></dd>
+      <dt>Public Variables: <dt>
+      <dd><%= latest_figures.public_variables %></dd>
+      <dt>Protecteed Variables: <dt>
+      <dd><%= latest_figures.protected_variables %></dd>
+      <dt>Protecteed Variables: <dt>
+      <dd><%= latest_figures.private_variables %></dd>
+    </dl>
+
+    <%= pie_chart({"Public Variables" => latest_figures.public_variables,
+                  "Protected Variables" => latest_figures.protected_variables,
+                  "Private Variables" => latest_figures.private_variables}) %> 
+  </div>
+  
+   <div class="col-md-4">
+    <dl class="dl-horizontal">
+      <dt>Lines: <dt>
+      <dd><%= latest_figures.number_of_lines%></dd>
+      <dt>Methods: <dt>
+      <dd><%= latest_figures.number_of_methods%></dd>
+      <dt>Average Lines Per Method: <dt>
+      <dd><%= latest_figures.average_lines_per_method %></dd>
+      <dt>Average Method Complexity: <dt>
+      <dd><%= latest_figures.average_method_complexity %></dd>
+    </dl>
+  </div>
+
+   <div class="col-md-4">
+    <dl class="dl-horizontal">
+      <dt>Weighted Methods Per Class: <dt>
+      <dd><%= latest_figures.weighted_methods_per_class %></dd>
+      <dt>Depth of Inheritance: <dt>
+      <dd><%= latest_figures.depth_of_inheritance %></dd>
+    </dl>
+  </div>
+</div>
