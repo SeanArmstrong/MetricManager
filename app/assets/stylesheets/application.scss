@@ -2,3 +2,16 @@
  @import "bootstrap";
  @import "font-awesome-sprockets";
  @import "font-awesome";
+
+.dl-horizontal{
+  padding-top: 100px;
+}
+
+.dl-horizontal dt{
+  text-align: left;
+  width: 35%;
+}
+
+.dl-horizontal dd{
+}
+
