@@ -57,7 +57,7 @@ module API::V1
 
             rsg = ResultSetGroup.find_by(upload_guid: params[:upload_guid])
             if rsg.nil?
-              rsg = ResultSetGroup.create(guid: params[:upload_guid])
+              rsg = ResultSetGroup.create(upload_guid: params[:upload_guid])
             end
 
             KlassResultSet.create(
