@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324164646) do
+ActiveRecord::Schema.define(version: 20150325085754) do
 
   create_table "klass_result_sets", force: true do |t|
     t.datetime "created_at"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 20150324164646) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "guid"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "complete"
+    t.integer  "project_id"
+    t.date     "due_date"
   end
 
   create_table "users", force: true do |t|

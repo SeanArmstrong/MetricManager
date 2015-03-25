@@ -3,14 +3,19 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Latest Line Count</th>
+      <th>Latest Complexity</th>
       <th>Updated At</th>
       <th>Created At</th>
     </tr>
   </thead>
   <tbody>
     <% @klass.methoods.each do |method| %>
+    <% latest_set = method.method_result_sets.last %>
       <tr data-link="<%= method_path(@klass.project, @klass.id, method.id) %>">
         <td><%= method.name %></td>
+        <td><%= latest_set.number_of_lines %></td>
+        <td><%= latest_set.complexity %></td>
         <td><%= method.updated_at %></td>
         <td><%= method.created_at %></td>
       </tr>

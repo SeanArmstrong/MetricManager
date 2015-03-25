@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  resources :projects
+  resources :projects do
+    resources :tasks
+  end
 
   mount API::Root => '/'
 
   devise_for :users
 
   root 'projects#index'
+
   get 'projects/:pid/classes', to: 'klasses#index', as: 'klasses'
   get 'projects/:pid/classes/:kid', to: 'klasses#show', as: 'klass'
   get 'projects/:pid/classes/:kid/methods', to:'methoods#index', as: 'methods'
