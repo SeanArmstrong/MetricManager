@@ -40,7 +40,7 @@ module API::V1
               MethodResultSet.create(methood_id: m.id,
                                       number_of_lines: params[:number_of_lines],
                                       complexity: params[:complexity],
-                                      result_set_group: rsg.id) 
+                                      result_set_group_id: rsg.id) 
             else
               "Can't Find Klass"
             end
