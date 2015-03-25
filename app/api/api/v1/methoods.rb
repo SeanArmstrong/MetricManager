@@ -31,10 +31,16 @@ module API::V1
               if m.nil?
                 m = Methood.create(name: params[:name], klass_id: k.id)
               end
+
+              rsg = ResultSetGroup.find_by(upload_guid: params[:upload_guid])
+              if rsg.nil?
+                rsg = ResultSetGroup.create(guid: params[:upload_guid])
+              end
+
               MethodResultSet.create(methood_id: m.id,
                                       number_of_lines: params[:number_of_lines],
                                       complexity: params[:complexity],
-                                      upload_guid: params[:upload_guid])
+                                      result_set_group: rsg.id) 
             else
               "Can't Find Klass"
             end

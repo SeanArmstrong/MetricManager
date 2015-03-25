@@ -55,6 +55,11 @@ module API::V1
               k = Klass.create(name: params[:name], package: params[:package], project_id: p.id)
             end
 
+            rsg = ResultSetGroup.find_by(upload_guid: params[:upload_guid])
+            if rsg.nil?
+              rsg = ResultSetGroup.create(guid: params[:upload_guid])
+            end
+
             KlassResultSet.create(
                         klass_id: k.id,
                         variables: params[:variables],
@@ -69,7 +74,7 @@ module API::V1
                         depth_of_inheritance: params[:depth_of_inheritance],
                         LCOM: params[:lcom],
                         CBO: params[:cbo],
-                        upload_guid: params[:upload_guid])
+                        result_set_group_id: rsg.id)
           end
         end
       end
