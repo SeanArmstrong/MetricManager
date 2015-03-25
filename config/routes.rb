@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   root 'projects#index'
 
+  post 'tasks/:id/complete', to: 'tasks#complete', as: 'complete_task'
+  post 'tasks/:id/uncomplete', to: 'tasks#uncomplete', as: 'uncomplete_task'
+
   get 'projects/:pid/classes', to: 'klasses#index', as: 'klasses'
   get 'projects/:pid/classes/:kid', to: 'klasses#show', as: 'klass'
   get 'projects/:pid/classes/:kid/methods', to:'methoods#index', as: 'methods'

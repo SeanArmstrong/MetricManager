@@ -10,12 +10,14 @@
   </thead>
   <tbody>
     <% @project.klasses.each do |klass| %>
-      <tr data-link="<%= klass_path(@project, klass) %>">
-        <td><%= klass.name %></td>
-        <td><%= klass.package%></td>
-        <td><%= klass.updated_at.strftime("%d-%m-%Y") %></td>
-        <td><%= klass.created_at.strftime("%d-%m-%Y") %></td>
-      </tr>
+    <% if !klass.is_total %>
+        <tr data-link="<%= klass_path(@project, klass) %>">
+          <td><%= klass.name %></td>
+          <td><%= klass.package%></td>
+          <td><%= klass.updated_at.strftime("%d-%m-%Y") %></td>
+          <td><%= klass.created_at.strftime("%d-%m-%Y") %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

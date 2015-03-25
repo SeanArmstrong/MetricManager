@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325121648) do
+ActiveRecord::Schema.define(version: 20150325133010) do
 
   create_table "klass_result_sets", force: true do |t|
     t.datetime "created_at"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150325121648) do
     t.boolean  "complete"
     t.integer  "project_id"
     t.date     "due_date"
+    t.datetime "completed_at"
   end
 
   create_table "users", force: true do |t|

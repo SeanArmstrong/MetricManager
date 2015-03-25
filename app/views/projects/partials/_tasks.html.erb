@@ -7,6 +7,9 @@
       <th>Due Date</th>
       <th>Updated At</th>
       <th>Created At</th>
+      <th>Completed</th>
+      <th>Completed At</th>
+      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -19,6 +22,17 @@
         <td><%= task.due_date.strftime("%d-%m-%Y")%></td>
         <td><%= task.updated_at.strftime("%d-%m-%Y")%></td>
         <td><%= task.created_at.strftime("%d-%m-%Y") %></td>
+        <td><%= String(task.complete).capitalize  %></td>
+        <td><%= if task.complete? 
+                  task.completed_at.strftime("%d-%m-%Y"); 
+                 end
+                  %></td>
+        <td><%= if task.complete
+                  link_to 'UnComplete', uncomplete_task_path(task), method: :update
+                else
+                  link_to 'Complete', complete_task_path(task), method: :update
+                end
+                  %></td>
         <td><%= link_to 'Edit', edit_project_task_path(@project, task) %></td>
         <td><%= link_to 'Destroy', project_task_path(@project, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

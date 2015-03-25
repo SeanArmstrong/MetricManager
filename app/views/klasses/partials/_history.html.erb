@@ -1,5 +1,15 @@
 <h4>History</h4>
 <% sets = @klass.klass_result_sets %>
+<% tasks = @klass.project.tasks.where(complete: true) %>
+<% 
+      d1 = sets.map{|s| [s.created_at, s.number_of_lines] }
+      d2 = tasks.map{|t|  [t.completed_at, 0] }
+      d1 = d1.concat(tasks.map{|t|  [t.completed_at, nil] })
+      d2 = d2.concat(sets.map{|s|  [s.created_at, nil] })
+
+
+
+%>
 <div class="row">
  <div class="col-md-6">
     <%= line_chart [
@@ -10,7 +20,8 @@
   </div>
  <div class="col-md-6">
     <%= line_chart [
-      {name: "Lines", data: sets.map{|s| [s.created_at, s.number_of_lines] }},
+      {name: "Lines", data: d1},
+      {name: "Tasks", data: d2}
     ] %>
   </div>
 </div>
@@ -21,6 +32,7 @@
       {name: "Public Variables", data: sets.map{|s| [s.created_at, s.public_variables] }},
       {name: "Protected Variables", data: sets.map{|s| [s.created_at, s.protected_variables] }},
       {name: "Private Variables", data: sets.map{|s| [s.created_at, s.private_variables] }},
+      {name: "Tasks", data: tasks.map{|t|  [t.completed_at, 0] }},
     ] %>
   </div>
  <div class="col-md-6">

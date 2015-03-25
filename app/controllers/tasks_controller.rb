@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_project
+  before_action :set_project, except: [:complete, :uncomplete]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -40,6 +40,18 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_with(@project, @task)
+  end
+
+  def complete
+    @task = Task.find_by_id(params[:id])
+    @task.set_to_completed
+    respond_with(@task.project)
+  end
+
+  def uncomplete
+    @task = Task.find_by_id(params[:id])
+    @task.set_to_uncompleted
+    respond_with(@task.project)
   end
 
   private
