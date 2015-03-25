@@ -53,7 +53,7 @@ module API::V1
           if !p.nil?
             k = p.klasses.find_by(name: params[:name])
             if k.nil?
-              k = Klass.create(name: params[:name], package: params[:package], project_id: p.id)
+              k = Klass.create(name: params[:name], package: params[:package], project_id: p.id, is_total: params[:is_total])
             end
 
             rsg = ResultSetGroup.find_by(upload_guid: params[:upload_guid])
