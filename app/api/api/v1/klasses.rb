@@ -44,6 +44,7 @@ module API::V1
         requires :cbo, type: Float 
 
         requires :upload_guid, type: String
+        requires :is_total, type: Boolean
       end
       post '/' do
         u = User.authenticate(params[:email], params[:password])
@@ -74,7 +75,8 @@ module API::V1
                         depth_of_inheritance: params[:depth_of_inheritance],
                         LCOM: params[:lcom],
                         CBO: params[:cbo],
-                        result_set_group_id: rsg.id)
+                        result_set_group_id: rsg.id,
+                        is_total: params[:is_total])
           end
         end
       end

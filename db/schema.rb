@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325113535) do
+ActiveRecord::Schema.define(version: 20150325115738) do
 
   create_table "klass_result_sets", force: true do |t|
     t.datetime "created_at"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150325113535) do
     t.float    "LCOM"
     t.float    "CBO"
     t.integer  "result_set_group_id"
+    t.boolean  "is_total"
   end
 
   create_table "klasses", force: true do |t|
