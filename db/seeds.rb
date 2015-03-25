@@ -21,24 +21,25 @@ project3 = Project.create(name: "Project3", user: user3)
 
 # Create 3 Classes
 
-klass1 = Klass.create(name: "Class1", project: project1)
-klass2 = Klass.create(name: "Class2", project: project2)
-klass3 = Klass.create(name: "Class3", project: project3)
+klass1 = Klass.create(name: "Class1", project: project1, is_total: false)
+klass2 = Klass.create(name: "Class2", project: project2, is_total: false)
+klass3 = Klass.create(name: "Class3", project: project3, is_total: false)
+klass3 = Klass.create(name: "Class3", project: project3, is_total: true)
 
 # Create 3 Klass_result_sets
 klass_result_set1 = KlassResultSet.create(klass: klass1, variables: 10, public_variables: 5, protected_variables: 3, private_variables: 2, 
                                           number_of_lines: 100, number_of_methods: 10, average_lines_per_method: 8, average_method_complexity: 10,
-                                          weighted_methods_per_class: 100, depth_of_inheritance: 2, LCOM: 5, CBO: 5)
+                                          weighted_methods_per_class: 100, depth_of_inheritance: 2, LCOM: 5, CBO: 5, is_total: false)
 
 klass_result_set2 = KlassResultSet.create(klass: klass2, variables: 20, public_variables: 10, protected_variables: 6, private_variables: 4, 
                                           number_of_lines: 100, number_of_methods: 10, average_lines_per_method: 8, average_method_complexity: 100,
-                                          weighted_methods_per_class: 1000, depth_of_inheritance: 10, LCOM: 5, CBO: 9)
+                                          weighted_methods_per_class: 1000, depth_of_inheritance: 10, LCOM: 5, CBO: 9, is_total: false)
 
 klass_result_set3 = KlassResultSet.create(klass: klass3, variables: 20, public_variables: 10, protected_variables: 6, private_variables: 4, 
                                           number_of_lines: 100, number_of_methods: 10, average_lines_per_method: 8, average_method_complexity: 100,
-                                          weighted_methods_per_class: 1000, depth_of_inheritance: 10, LCOM: 5, CBO: 9)
+                                          weighted_methods_per_class: 1000, depth_of_inheritance: 10, LCOM: 5, CBO: 9, is_total: false)
 
-
+klass_result_set4 = KlassResultSet.create(klass: klass3, variables: 50, public_variables: 35, protected_variables: 15, private_variables: 10, number_of_lines: 300, number_of_methods: 30, average_lines_per_method: 8, average_method_complexity: 69, weighted_methods_per_class: 690, depth_of_inheritance: 10, LCOM: 5, CBO: 9, is_total: true) 
 # Create 3 Methoods
 method1 = Methood.create(name: "Method1", klass: klass1)
 method2 = Methood.create(name: "Method2", klass: klass2)

@@ -1,0 +1,36 @@
+<% latest_figures = @project.klasses.where(is_total: true).last.klass_result_sets.last %>
+<% if latest_figures %>
+<h4>Latest figures</h4>
+<div class="row">
+ <div class="col-md-6">
+    <%= pie_chart({"Total Public Variables" => latest_figures.public_variables,
+                  "Total Protected Variables" => latest_figures.protected_variables,
+                  "Total Private Variables" => latest_figures.private_variables}) %> 
+  </div>
+  
+   <div class="col-md-6">
+    <dl class="dl-horizontal dl-lower-me-project">
+      <dt>Project Totals<dt>
+      <dd></dd>
+      <dt>Lines: <dt>
+      <dd><%= latest_figures.number_of_lines%></dd>
+      <dt>Methods: <dt>
+      <dd><%= latest_figures.number_of_methods%></dd>
+      <br>
+      <dt>Project Averages<dt>
+      <dd></dd>
+      <dt>Average Lines Per Method: <dt>
+      <dd><%= latest_figures.average_lines_per_method %></dd>
+      <dt>Average Method Complexity: <dt>
+      <dd><%= latest_figures.average_method_complexity %></dd>
+      <dt>Weighted Methods Per Class: <dt>
+      <dd><%= latest_figures.weighted_methods_per_class %></dd>
+      <br>
+      <dt>Project Max</dt>
+      <dd></dd>
+      <dt>Depth of Inheritance: <dt>
+      <dd><%= latest_figures.depth_of_inheritance %></dd>
+    </dl>
+  </div>
+</div>
+<% end %>

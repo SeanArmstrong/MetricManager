@@ -9,6 +9,12 @@ class Project < ActiveRecord::Base
   
   before_create :add_guid
 
+  def get_total_result_sets
+  require 'pry'; binding.pry
+    klass_id = self.klasses.where(is_total: true).ids
+    KlassResultSet.where(is_total: true).where(klass_id: klass_id)
+  end
+
   private
   
   def add_guid

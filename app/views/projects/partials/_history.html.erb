@@ -1,5 +1,5 @@
 <h4>History</h4>
-<% sets = @klass.klass_result_sets %>
+<% sets = @project.get_total_result_sets %>
 <div class="row">
  <div class="col-md-6">
     <%= line_chart [
@@ -42,3 +42,4 @@
     ] %>
   </div>
 </div>
+
