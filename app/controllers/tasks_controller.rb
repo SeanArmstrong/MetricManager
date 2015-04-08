@@ -24,10 +24,11 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(project_id: params[:project_id])
-    @task.name = params[:task][:name]
-    @task.description = params[:task][:description]
-    @task.due_date = params[:task][:due_date]
+    @task = Task.new(task_params)
+    @task.project = @project
+    unless @task.complete
+      @task.completed_at = nil
+    end
     flash[:notice] = 'Task was successfully created.' if @task.save
     respond_with(@project, @task)
   end
@@ -39,24 +40,24 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    respond_with(@project, @task)
+    flash[:notice] = "Task was deleted." if @task.destroyed?
+    respond_with(@project)
   end
 
   def complete
     @task = Task.find_by_id(params[:id])
-    @task.set_to_completed
+    flash[:notice] = 'Task was successfully updated.' if @task.set_to_completed
     respond_with(@task.project)
   end
 
   def uncomplete
     @task = Task.find_by_id(params[:id])
-    @task.set_to_uncompleted
+    flash[:notice] = 'Task was successfully updated.' if @task.set_to_uncompleted
     respond_with(@task.project)
   end
 
   private
     def set_task
-      #@task = current_user.projects.find_by_id(params[:project_id]).tasks.find(params[:tid])
       @task = @project.tasks.find(params[:id])
     end
 
@@ -65,6 +66,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params[:task]
+      params.require(:task).permit(:name, :description, :due_date, :start_date, :complete, :completed_at)
     end
 end

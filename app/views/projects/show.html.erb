@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <h3>Project Profile: <%= @project.name %></h3>
-
+<% if @project.klasses.any? %>
 <%= render 'projects/partials/latest_figures' %>
 <br>
 <%= render 'projects/partials/history' %>
@@ -10,8 +8,20 @@
 <br>
 <%= render 'projects/partials/klasses' %>
 <br>
+
+<% else %>
+<h4>No Classes</h4>
+<br>
+<br>
+<% end %>
 <%= render 'projects/partials/tasks' %>
 <br>
+
+<%= link_to 'New Task', new_project_task_path(@project) %>
+<br>
+<br>
+<br>
+
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

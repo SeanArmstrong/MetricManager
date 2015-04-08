@@ -26,17 +26,29 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.user = current_user
     @project.save
+    if @project.errors.any?
+      flash[:error] = "Could not create project. See errors below."
+    else
+      flash[:success] = "Project Created Successfully."
+    end
     respond_with(@project)
   end
 
   def update
     @project.update(project_params)
+    if @project.errors.any?
+      flash[:error] = "Could not create project. See errors below."
+    else
+      flash[:success] = "Project Updated Successfully."
+    end
     respond_with(@project)
   end
 
   def destroy
     @project.destroy
+    flash[:notice] = "Project Deleted Successfully." if @project.destroyed?
     respond_with(@project)
   end
 
@@ -46,6 +58,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params[:project]
+      params.require(:project).permit(:name);
     end
 end

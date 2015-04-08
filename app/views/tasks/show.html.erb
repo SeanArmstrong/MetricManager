@@ -1,3 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h2>Task: <%= @task.name %></h2>
+<h5><%= @task.description %></h5>
+<div class="row">
+    <ul>
+    <li>Created At:   <%= @task.created_at.strftime("%d-%m-%Y") %></li>
+    <li>Updated At:   <%= @task.updated_at.strftime("%d-%m-%Y") %></li>
+    <li>Start Date:   <%= @task.start_date.strftime("%d-%m-%Y") %></li>
+    <li>Due Date:     <%= @task.due_date.strftime("%d-%m-%Y") %></li>
+    <li>Complete?:    <%= String(@task.complete).capitalize %></li>
+    <% if @task.complete %><li>Completed At: <%= @task.completed_at.strftime("%d-%m-%Y") %></li><% end %>
+    </ul>
+</div>
 
 <%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
+<%= link_to 'Back', @project %>

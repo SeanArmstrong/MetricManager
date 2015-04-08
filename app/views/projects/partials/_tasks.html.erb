@@ -16,10 +16,10 @@
   </thead>
   <tbody>
     <% @project.tasks.each do |task| %>
-      <tr data-link="<%= project_task_path(@project, task) %>">
+      <tr data-link="<%= project_task_path(@project, task) %>" >
         <td><%= task.name %></td>
         <td><%= task.description %></td>
-        <td><%= task.due_date.strftime("%d-%m-%Y")%></td>
+        <td <% if !task.complete && task.due_date < Date.today %>class="task-overdue"<% end %>><%= task.due_date.strftime("%d-%m-%Y")%></td>
         <td><%= task.updated_at.strftime("%d-%m-%Y")%></td>
         <td><%= task.created_at.strftime("%d-%m-%Y") %></td>
         <td><%= String(task.complete).capitalize  %></td>

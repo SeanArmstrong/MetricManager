@@ -24,7 +24,7 @@
           <td><%= project.updated_at %></td>
           <td><%= project.created_at %></td>
           <td><%= link_to 'Edit', (project) %></td>
-          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure you want to delete this project? This cannot be undone!' } %></td>
         </tr>
       <% end %>
     </tbody>

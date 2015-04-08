@@ -15,15 +15,30 @@
 </br>      
 
 <div>
+  <%= f.label :start_date %> </br>
+  <%= f.date_field :start_date, :value => Time.now.strftime("%Y-%m-%d") %>
+</div>
+
+<div>
   <%= f.label :due_date %> </br>
   <%= f.date_field :due_date, :value => Time.now.strftime("%Y-%m-%d") %>
+</div>
+
+<div>
+  <%= f.label :complete %> </br>
+  <%= f.check_box :complete %>
+</div>
+
+<div>
+  <%= f.label :completed_at %> </br>
+  <%= f.date_field :completed_at %>
 </div>
 
 </br>      
 
   <% if @task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <h4><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h4>
 
       <ul>
       <% @task.errors.full_messages.each do |message| %>

@@ -6,6 +6,8 @@ class Project < ActiveRecord::Base
 
   validates_presence_of :user_id
   validates_presence_of :name
+
+  validates :name, length: { minimum: 3, maximum: 30 }
   
   before_create :add_guid
 
