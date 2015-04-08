@@ -27,12 +27,12 @@
         <td><%= set.private_variables %></td>
         <td><%= set.number_of_lines %></td>
         <td><%= set.number_of_methods %></td>
-        <td><%= set.average_lines_per_method%></td>
-        <td><%= set.average_method_complexity %></td>
-        <td><%= set.weighted_methods_per_class%></td>
+        <td><%= sprintf '%.2f', set.average_lines_per_method%></td>
+        <td><%= sprintf '%.2f', set.average_method_complexity %></td>
+        <td><%= sprintf '%.2f', set.weighted_methods_per_class%></td>
         <td><%= set.depth_of_inheritance%></td>
-        <td><%= set.LCOM%></td>
-        <td><%= set.CBO%></td>
+        <td><%= sprintf '%.2f', set.LCOM%></td>
+        <td><%= sprintf '%.2f', set.CBO%></td>
       </tr>
     <% end %>
   </tbody>

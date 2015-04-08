@@ -20,11 +20,11 @@
       <dt>Project Averages<dt>
       <dd></dd>
       <dt>Average Lines Per Method: <dt>
-      <dd><%= latest_figures.average_lines_per_method %></dd>
+      <dd><%= sprintf('%.2f', latest_figures.average_lines_per_method) %></dd>
       <dt>Average Method Complexity: <dt>
-      <dd><%= latest_figures.average_method_complexity %></dd>
+      <dd><%= sprintf('%.2f', latest_figures.average_method_complexity) %></dd>
       <dt>Weighted Methods Per Class: <dt>
-      <dd><%= latest_figures.weighted_methods_per_class %></dd>
+      <dd><%= sprintf('%.2f', latest_figures.weighted_methods_per_class) %></dd>
       <br>
       <dt>Project Max</dt>
       <dd></dd>
