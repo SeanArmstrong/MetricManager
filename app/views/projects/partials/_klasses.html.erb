@@ -21,3 +21,12 @@
     <% end %>
   </tbody>
 </table>
+
+<h5>Classes Comparison</h5>
+
+    <%= line_chart @project.klasses.where(is_total: false).map{|k|
+      {name: k.name, data: k.klass_result_sets.map{|s| [s.created_at, s.number_of_methods] } }
+    } %>
+
+<h5>Classes Comparison</h5>
+
