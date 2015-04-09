@@ -5,6 +5,11 @@
     <%= f.text_field :name %>
   </div>
 
+  <div>
+    <%= f.label :display_tasks %> </br>
+    <%= f.check_box :display_tasks, checked: true %>
+  </div>
+
   </br>
 
   <% if @project.errors.any? %>

@@ -19,6 +19,16 @@ class Task < ActiveRecord::Base
     self.save!
   end
 
+  def set_to_hidden
+    self.visible_on_graphs = false 
+    self.save!
+  end
+
+  def set_to_display
+    self.visible_on_graphs = true
+    self.save!
+  end
+
   private
 
   def is_complete?

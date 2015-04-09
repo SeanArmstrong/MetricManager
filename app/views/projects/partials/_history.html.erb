@@ -1,45 +1,63 @@
 <h4>History</h4>
 <% sets = @project.get_total_result_sets %>
+<%
+  # SO MUCH VIEW CODE! :/
+  # Move me to a controller 
+  lines = {name: "Lines", data: sets.map{|s| [s.created_at, s.number_of_lines] }}
+  methods = {name: "Methods", data: sets.map{|s| [s.created_at, s.number_of_methods] }}
+  linespermethod = {name: "Average Lines Per Method", data: sets.map{|s| [s.created_at, s.average_lines_per_method] }}
+  amc = {name: "Average Method Complexity", data: sets.map{|s| [s.created_at, s.average_method_complexity] }}
+  tvariables = {name: "Total Variables", data: sets.map{|s| [s.created_at, s.variables] }}
+  pubvariables = {name: "Public Variables", data: sets.map{|s| [s.created_at, s.public_variables] }}
+  provariables = {name: "Protected Variables", data: sets.map{|s| [s.created_at, s.protected_variables] }}
+  privariables = {name: "Private Variables", data: sets.map{|s| [s.created_at, s.private_variables] }}
+  lcom = {name: "LCOM", data: sets.map{|s| [s.created_at, s.LCOM] }}
+  cbo = {name: "CBO", data: sets.map{|s| [s.created_at, s.CBO] }}
+  doi =  {name: "Depth of Inheritance", data: sets.map{|s| [s.created_at, s.depth_of_inheritance] }}
+  wmc =  {name: "WMC", data: sets.map{|s| [s.created_at, s.weighted_methods_per_class] }}
+
+  if @project.display_tasks
+
+    linedata = @tasks + [lines]
+    methoddata = @tasks + [methods] + [linespermethod] + [amc]
+    variabledata = @tasks + [pubvariables] + [provariables] + [privariables]
+    ccdata = @tasks + [lcom] + [cbo]
+    doidata = @tasks + [doi]
+    wmcdata = @tasks + [wmc]
+
+  else
+    linedata = [lines]
+    methoddata = [methods] + [linespermethod] + [amc]
+    variabledata = [pubvariables] + [provariables] + [privariables]
+    ccdata = [lcom] + [cbo]
+    doidata = [doi]
+    wmcdata = [wmc]
+
+  end
+
+%>
 <div class="row">
  <div class="col-md-6">
-    <%= line_chart [
-      {name: "Methods", data: sets.map{|s| [s.created_at, s.number_of_methods] }},
-      {name: "Average Lines Per Method", data: sets.map{|s| [s.created_at, s.average_lines_per_method] }},
-      {name: "Average Method Complexity", data: sets.map{|s| [s.created_at, s.average_method_complexity] }},
-    ] %>
+    <%= line_chart methoddata  %>
   </div>
  <div class="col-md-6">
-    <%= line_chart [
-      {name: "Lines", data: sets.map{|s| [s.created_at, s.number_of_lines] }},
-    ] %>
+    <%= line_chart linedata %>
   </div>
 </div>
 <div class="row">
  <div class="col-md-6">
-    <%= line_chart [
-      {name: "Total Variables", data: sets.map{|s| [s.created_at, s.variables] }},
-      {name: "Public Variables", data: sets.map{|s| [s.created_at, s.public_variables] }},
-      {name: "Protected Variables", data: sets.map{|s| [s.created_at, s.protected_variables] }},
-      {name: "Private Variables", data: sets.map{|s| [s.created_at, s.private_variables] }},
-    ] %>
+    <%= line_chart variabledata %>
   </div>
  <div class="col-md-6">
-    <%= line_chart [
-      {name: "LCOM", data: sets.map{|s| [s.created_at, s.LCOM] }},
-      {name: "CBO", data: sets.map{|s| [s.created_at, s.CBO] }},
-    ] %>
+    <%= line_chart ccdata %>
   </div>
 </div>
 <div class="row">
  <div class="col-md-6">
-    <%= line_chart [
-      {name: "Depth of Inheritance", data: sets.map{|s| [s.created_at, s.depth_of_inheritance] }},
-    ] %>
+    <%= line_chart doidata %>
   </div>
  <div class="col-md-6">
-    <%= line_chart [
-      {name: "WMC", data: sets.map{|s| [s.created_at, s.weighted_methods_per_class] }},
-    ] %>
+    <%= line_chart wmcdata %>
   </div>
 </div>
 

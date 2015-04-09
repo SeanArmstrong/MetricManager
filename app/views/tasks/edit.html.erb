@@ -36,6 +36,11 @@
   <%= f.date_field :completed_at %>
 </div>
 
+<div>
+  <%= f.label :visible_on_graphs %> </br>
+  <%= f.check_box :visible_on_graphs %>
+</div>
+
 </br>      
 
   <% if @task.errors.any? %>

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   post 'tasks/:id/complete', to: 'tasks#complete', as: 'complete_task'
   post 'tasks/:id/uncomplete', to: 'tasks#uncomplete', as: 'uncomplete_task'
+  post 'tasks/:id/hide', to: 'tasks#hide', as: 'hide_task'
+  post 'tasks/:id/display', to: 'tasks#display', as: 'display_task'
 
   get 'projects/:pid/classes', to: 'klasses#index', as: 'klasses'
   get 'projects/:pid/classes/:kid', to: 'klasses#show', as: 'klass'

@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
   def show 
     if @project.present?
+      set_task_info
       respond_with(@project)
     else
       redirect_to root_path
@@ -58,6 +59,30 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name);
+      params.require(:project).permit(:name, :display_tasks);
+    end
+
+    def set_task_info
+      taskstart = @project.tasks.where(visible_on_graphs: true).map do |task|
+        {name: "Start #{task.name}", data: [[task.start_date, 0]]}
+      end
+
+      taskdue = @project.tasks.where(visible_on_graphs: true, complete: false).map do |task|
+        {name: "Due #{task.name}", data: [[task.due_date, 0]]}
+      end 
+
+      taskcomplete = @project.tasks.where(visible_on_graphs: true, complete: true).map do |task|
+        {name: "Completed #{task.name}", data: [[task.completed_at, 0]]}
+      end 
+
+      taskstart.each do |ts|
+       taskdue.prepend(ts)
+      end
+
+      taskcomplete.each do |tc|
+       taskdue.prepend(tc)
+      end 
+
+      @tasks = taskdue
     end
 end

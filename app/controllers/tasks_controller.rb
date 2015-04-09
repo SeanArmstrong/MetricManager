@@ -56,6 +56,18 @@ class TasksController < ApplicationController
     respond_with(@task.project)
   end
 
+  def display 
+    @task = Task.find_by_id(params[:id])
+    flash[:notice] = 'Task was successfully updated.' if @task.set_to_display
+    respond_with(@task.project)
+  end
+
+  def hide 
+    @task = Task.find_by_id(params[:id])
+    flash[:notice] = 'Task was successfully updated.' if @task.set_to_hidden
+    respond_with(@task.project)
+  end
+
   private
     def set_task
       @task = @project.tasks.find(params[:id])
@@ -66,6 +78,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :description, :due_date, :start_date, :complete, :completed_at)
+      params.require(:task).permit(:name, :description, :due_date, :start_date, :complete, :completed_at, :visible_on_graphs)
     end
 end

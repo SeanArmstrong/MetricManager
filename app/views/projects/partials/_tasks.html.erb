@@ -5,11 +5,11 @@
       <th>Name</th>
       <th>Description</th>
       <th>Due Date</th>
-      <th>Updated At</th>
-      <th>Created At</th>
+      <th>Start Date</th>
       <th>Completed</th>
       <th>Completed At</th>
       <th></th>
+      <th>Visibility</th>
       <th></th>
       <th></th>
     </tr>
@@ -20,8 +20,7 @@
         <td><%= task.name %></td>
         <td><%= task.description %></td>
         <td <% if !task.complete && task.due_date < Date.today %>class="task-overdue"<% end %>><%= task.due_date.strftime("%d-%m-%Y")%></td>
-        <td><%= task.updated_at.strftime("%d-%m-%Y")%></td>
-        <td><%= task.created_at.strftime("%d-%m-%Y") %></td>
+        <td><%= task.start_date.strftime("%d-%m-%Y") %></td>
         <td><%= String(task.complete).capitalize  %></td>
         <td><%= if task.complete? 
                   task.completed_at.strftime("%d-%m-%Y"); 
@@ -33,6 +32,12 @@
                   link_to 'Complete', complete_task_path(task), method: :update
                 end
                   %></td>
+         <td><%= if task.visible_on_graphs
+                   link_to 'Hide', hide_task_path(task), method: :update
+                 else
+                   link_to 'Display', display_task_path(task), method: :update
+                 end
+                 %></td>
         <td><%= link_to 'Edit', edit_project_task_path(@project, task) %></td>
         <td><%= link_to 'Destroy', project_task_path(@project, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

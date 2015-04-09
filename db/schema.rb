@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408100037) do
+ActiveRecord::Schema.define(version: 20150409132807) do
 
   create_table "klass_result_sets", force: true do |t|
     t.datetime "created_at"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150408100037) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "guid"
+    t.boolean  "display_tasks"
   end
 
   create_table "result_set_groups", force: true do |t|
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 20150408100037) do
     t.date     "due_date"
     t.datetime "completed_at"
     t.date     "start_date"
+    t.boolean  "visible_on_graphs"
   end
 
   create_table "users", force: true do |t|

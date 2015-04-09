@@ -8,6 +8,7 @@
     <li>Due Date:     <%= @task.due_date.strftime("%d-%m-%Y") %></li>
     <li>Complete?:    <%= String(@task.complete).capitalize %></li>
     <% if @task.complete %><li>Completed At: <%= @task.completed_at.strftime("%d-%m-%Y") %></li><% end %>
+    <li>Visible on Graphs?:    <%= String(@task.visible_on_graphs).capitalize %></li>
     </ul>
 </div>
 
