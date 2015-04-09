@@ -15,3 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$('#myCollapsible').on('click', function () {
+alert('go');
+  })
