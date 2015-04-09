@@ -1,4 +1,4 @@
-<h4>Toal Result Sets</h4>
+<h4>Total Result Sets</h4>
 <table class="table table-striped table-hover" id="entrytable">
   <thead>
     <tr>
@@ -15,6 +15,7 @@
       <th>DOI</th>
       <th>LCOM</th>
       <th>CBO</th>
+      <th>SDMC</th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +34,7 @@
         <td><%= set.depth_of_inheritance%></td>
         <td><%= sprintf '%.2f', set.LCOM%></td>
         <td><%= sprintf '%.2f', set.CBO%></td>
+        <td><%= sprintf '%.2f', set.sdmc%></td>
       </tr>
     <% end %>
   </tbody>
