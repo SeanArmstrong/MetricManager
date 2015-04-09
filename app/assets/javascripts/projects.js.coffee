@@ -21,7 +21,7 @@ $('#classGraphs').on 'show.bs.collapse', ->
   arrow.addClass('fa-caret-up')
   return
 
-$(document).on "click", $('classGraphs'), (e)->
+$(document).on "click", $('#classGraphs'), (e)->
   console.log("Hello") 
   arrow = e.target.children[0]
   if isClassGraphsOpen == false 

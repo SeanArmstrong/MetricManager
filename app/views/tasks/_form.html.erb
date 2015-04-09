@@ -1,42 +1,54 @@
 <%= form_for [:project, @task] do |f| %>
 
-<div>
-  <%= f.label :name %> </br>
-  <%= f.text_field :name %>
-</div>
+<div class=row>
+  <div class="col-md-4">
+    <div>
+      <%= f.label :name %> </br>
+      <%= f.text_field :name %>
+    </div>
 
-</br>      
+    </br>      
 
-<div>
-  <%= f.label :description %> </br>
-  <%= f.text_area :description %>
-</div>
+    <div>
+      <%= f.label :description %> </br>
+      <%= f.text_area :description %>
+    </div>
 
-</br>      
+    </br>      
 
-<div>
-  <%= f.label :start_date %> </br>
-  <%= f.date_field :start_date, :value => Time.now.strftime("%Y-%m-%d") %>
-</div>
+    <div>
+      <%= f.label :visible_on_graphs %> -     
+      <%= f.check_box :visible_on_graphs %>
+    </div>
 
-<div>
-  <%= f.label :due_date %> </br>
-  <%= f.date_field :due_date, :value => Time.now.strftime("%Y-%m-%d") %>
-</div>
+    </br>      
 
-<div>
-  <%= f.label :complete %> </br>
-  <%= f.check_box :complete %>
-</div>
+    <div>
+      <%= f.label :complete %> -  
+      <%= f.check_box :complete %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div>
+      <%= f.label :start_date %> </br>  
+      <%= f.date_field :start_date, :value => Time.now.strftime("%Y-%m-%d") %>
+    </div>
 
-<div>
-  <%= f.label :completed_at %> </br>
-  <%= f.date_field :completed_at %>
-</div>
+    </br>      
 
-<div>
-  <%= f.label :visible_on_graphs %> </br>
-  <%= f.check_box :visible_on_graphs %>
+    <div>
+      <%= f.label :due_date %> </br>
+      <%= f.date_field :due_date, :value => Time.now.strftime("%Y-%m-%d") %>
+    </div>
+
+    </br>      
+
+    <div>
+      <%= f.label :completed_at %> </br>
+      <%= f.date_field :completed_at %>
+    </div>
+  </div>
+
 </div>
 
 </br>      

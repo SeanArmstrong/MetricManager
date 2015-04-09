@@ -15,13 +15,17 @@
   cbo = {name: "CBO", data: sets.map{|s| [s.created_at, s.CBO] }}
   doi =  {name: "Depth of Inheritance", data: sets.map{|s| [s.created_at, s.depth_of_inheritance] }}
   wmc =  {name: "WMC", data: sets.map{|s| [s.created_at, s.weighted_methods_per_class] }}
+  sdmc =  {name: "SDMC", data: sets.map{|s| [s.created_at, s.sdmc] }}
+
   if @project.display_tasks
     linedata = @tasks + [lines]
     methoddata = @tasks + [methods] + [linespermethod] + [amc]
     variabledata = @tasks + [pubvariables] + [provariables] + [privariables]
-    ccdata = @tasks + [lcom] + [cbo]
+    lcomdata = @tasks + [lcom]
     doidata = @tasks + [doi]
     wmcdata = @tasks + [wmc]
+    sdmcdata = @tasks + [sdmc]
+    cbodata = @tasks + [cbo]
   else
     linedata = [lines]
     methoddata = [methods] + [linespermethod] + [amc]
@@ -29,6 +33,8 @@
     ccdata = [lcom] + [cbo]
     doidata = [doi]
     wmcdata = [wmc]
+    sdmcdata = [sdmc]
+    cbodata = [cbo]
   end
 
 %>
@@ -45,7 +51,7 @@
     <%= line_chart variabledata %>
   </div>
  <div class="col-md-6">
-    <%= line_chart ccdata %>
+    <%= line_chart lcomdata %>
   </div>
 </div>
 <div class="row">
@@ -54,6 +60,14 @@
   </div>
  <div class="col-md-6">
     <%= line_chart wmcdata %>
+  </div>
+</div>
+<div class="row">
+ <div class="col-md-6">
+    <%= line_chart sdmcdata %>
+  </div>
+ <div class="col-md-6">
+    <%= line_chart cbodata %>
   </div>
 </div>
 

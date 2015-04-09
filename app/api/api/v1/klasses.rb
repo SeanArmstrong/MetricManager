@@ -42,6 +42,7 @@ module API::V1
         requires :depth_of_inheritance, type: Integer 
         requires :lcom, type: Float 
         requires :cbo, type: Float 
+        requires :sdmc, type: Float
 
         requires :upload_guid, type: String
         requires :is_total, type: Boolean
@@ -75,6 +76,7 @@ module API::V1
                         depth_of_inheritance: params[:depth_of_inheritance],
                         LCOM: params[:lcom],
                         CBO: params[:cbo],
+                        SDMC: params[:sdmc],
                         result_set_group_id: rsg.id,
                         is_total: params[:is_total])
           end

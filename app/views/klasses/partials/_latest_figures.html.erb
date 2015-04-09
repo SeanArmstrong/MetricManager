@@ -19,6 +19,12 @@
       <dd><%= sprintf '%.2f', latest_figures.average_method_complexity %></dd>
       <dt>Weighted Methods Per Class: <dt>
       <dd><%= sprintf '%.2f', latest_figures.weighted_methods_per_class %></dd>
+      <dt>Standard Deviation: <dt>
+      <dd><%= sprintf('%.2f', latest_figures.sdmc) %></dd>
+      <dt>LCOM: <dt>
+      <dd><%= sprintf('%.2f', latest_figures.LCOM) %></dd>
+      <dt>CBO: <dt>
+      <dd><%= sprintf('%.2f', latest_figures.CBO) %></dd>
       <dt>Depth of Inheritance: <dt>
       <dd><%= latest_figures.depth_of_inheritance %></dd>
     </dl>
