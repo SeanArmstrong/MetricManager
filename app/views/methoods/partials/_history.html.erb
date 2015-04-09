@@ -1,15 +1,25 @@
 <h4>History</h4>
 <% sets = @methood.method_result_sets%>
+<%
+
+  lines = {name: "Lines", data: sets.map{|s| [s.created_at, s.number_of_lines] }}
+  complexity = {name: "Complexity", data: sets.map{|s| [s.created_at, s.complexity] }}
+  if @methood.display_tasks
+    linedata = @tasks + [lines]
+    complexitydata = @tasks + [complexity]
+  else
+    linedata = [lines]
+    complexitydata = [complexity]
+  end
+
+%>
+
 <div class="row">
  <div class="col-md-6">
-    <%= line_chart [
-      {name: "Lines", data: sets.map{|s| [s.created_at, s.number_of_lines] }},
-    ] %>
+    <%= line_chart linedata %>
   </div>
  <div class="col-md-6">
-    <%= line_chart [
-      {name: "Complexity", data: sets.map{|s| [s.created_at, s.complexity] }},
-    ] %>
+    <%= line_chart complexitydata  %>
   </div>
 </div>
 

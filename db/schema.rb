@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409132807) do
+ActiveRecord::Schema.define(version: 20150409144547) do
 
   create_table "klass_result_sets", force: true do |t|
     t.datetime "created_at"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150409132807) do
     t.string   "package"
     t.integer  "project_id"
     t.boolean  "is_total"
+    t.boolean  "display_tasks"
   end
 
   create_table "method_result_sets", force: true do |t|
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150409132807) do
     t.string   "name"
     t.string   "return_type"
     t.integer  "klass_id"
+    t.boolean  "display_tasks"
   end
 
   create_table "projects", force: true do |t|

@@ -1,6 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <h3>Class Profile: <%= @klass.name %></h3>
+
+<%= if @klass.display_tasks
+      link_to 'Hide Tasks', hide_tasks_for_klass_path(@klass), method: :update
+    else
+      link_to 'Show Tasks', display_tasks_for_klass_path(@klass), method: :update
+    end
+    %>
+
 <% if @klass.klass_result_sets.any? %>
 
   <%= render "klasses/partials/latest_figures.html.erb" %>

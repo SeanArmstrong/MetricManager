@@ -1,6 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <h3>Method Profile: <%= @methood.name %></h3>
+
+<%= if @methood.display_tasks
+      link_to 'Hide Tasks', hide_tasks_for_methood_path(@methood), method: :update
+    else
+      link_to 'Show Tasks', display_tasks_for_methood_path(@methood), method: :update
+    end
+    %>
+
 <% if @methood.method_result_sets.any? %>
 
   <%= render "methoods/partials/latest_figures.html.erb" %>

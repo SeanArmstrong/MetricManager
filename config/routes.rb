@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   post 'tasks/:id/hide', to: 'tasks#hide', as: 'hide_task'
   post 'tasks/:id/display', to: 'tasks#display', as: 'display_task'
 
+  post 'klasses/:id/hidetasks', to: 'klasses#hidetasks', as: 'hide_tasks_for_klass'
+  post 'klasses/:id/displaytasks', to: 'klasses#displaytasks', as: 'display_tasks_for_klass'
+
+  post 'methods/:id/hidetasks', to: 'methoods#hidetasks', as: 'hide_tasks_for_methood'
+  post 'methods/:id/displaytasks', to: 'methoods#displaytasks', as: 'display_tasks_for_methood'
+
   get 'projects/:pid/classes', to: 'klasses#index', as: 'klasses'
   get 'projects/:pid/classes/:kid', to: 'klasses#show', as: 'klass'
   get 'projects/:pid/classes/:kid/methods', to:'methoods#index', as: 'methods'
