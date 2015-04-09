@@ -44,3 +44,6 @@
     <% end %>
   </tbody>
 </table>
+
+
+ <%= timeline @project.tasks.where(complete: true).map{|t| [t.name, t.start_date.to_date, t.due_date.to_date] } %>
