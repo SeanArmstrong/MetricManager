@@ -67,22 +67,14 @@ class ProjectsController < ApplicationController
         {name: "Start #{task.name}", data: [[task.start_date, 0]]}
       end
 
-      taskdue = @project.tasks.where(visible_on_graphs: true, complete: false).map do |task|
-        {name: "Due #{task.name}", data: [[task.due_date, 0]]}
-      end 
-
       taskcomplete = @project.tasks.where(visible_on_graphs: true, complete: true).map do |task|
         {name: "Completed #{task.name}", data: [[task.completed_at, 0]]}
       end 
 
-      taskstart.each do |ts|
-       taskdue.prepend(ts)
-      end
-
       taskcomplete.each do |tc|
-       taskdue.prepend(tc)
+       taskstart.prepend(tc)
       end 
 
-      @tasks = taskdue
+      @tasks = taskstart
     end
 end
