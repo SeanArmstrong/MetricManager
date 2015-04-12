@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   post 'methods/:id/hidetasks', to: 'methoods#hidetasks', as: 'hide_tasks_for_methood'
   post 'methods/:id/displaytasks', to: 'methoods#displaytasks', as: 'display_tasks_for_methood'
 
+  post 'projects/:id/hidetasks', to: 'projects#hidetasks', as: 'hide_tasks_for_project'
+  post 'projects/:id/displaytasks', to: 'projects#displaytasks', as: 'display_tasks_for_project'
+
   get 'projects/:pid/classes', to: 'klasses#index', as: 'klasses'
   get 'projects/:pid/classes/:kid', to: 'klasses#show', as: 'klass'
   get 'projects/:pid/classes/:kid/methods', to:'methoods#index', as: 'methods'

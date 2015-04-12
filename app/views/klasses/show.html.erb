@@ -1,11 +1,13 @@
 <h3>Class Profile: <%= @klass.name %></h3>
 
+<button type="button" class="btn btn-primary hide-show-task">
 <%= if @klass.display_tasks
       link_to 'Hide Tasks', hide_tasks_for_klass_path(@klass), method: :update
     else
       link_to 'Show Tasks', display_tasks_for_klass_path(@klass), method: :update
     end
     %>
+    </button>
 
 <% if @klass.klass_result_sets.any? %>
 

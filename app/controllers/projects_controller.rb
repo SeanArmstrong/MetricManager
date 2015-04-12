@@ -53,6 +53,18 @@ class ProjectsController < ApplicationController
     respond_with(@project)
   end
 
+  def hidetasks
+    set_project
+    flash[:notice] = 'Project was successfully updated.' if @project.set_tasks_to_hidden
+    redirect_to :back
+  end
+
+  def displaytasks
+    set_project
+    flash[:notice] = 'Project was successfully updated.' if @project.set_tasks_to_visible
+    redirect_to :back
+  end
+
   private
     def set_project
       @project = current_user.projects.find_by_id(params[:id])

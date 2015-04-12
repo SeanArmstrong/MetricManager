@@ -16,6 +16,16 @@ class Project < ActiveRecord::Base
     KlassResultSet.where(is_total: true).where(klass_id: klass_id)
   end
 
+  def set_tasks_to_hidden
+    self.display_tasks = false
+    self.save!
+  end
+
+  def set_tasks_to_visible
+    self.display_tasks = true 
+    self.save!
+  end
+
   private
   
   def add_guid

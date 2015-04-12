@@ -1,4 +1,14 @@
 <h3>Project Profile: <%= @project.name %></h3>
+
+<button type="button" class="btn btn-primary hide-show-task">
+<%= if @project.display_tasks
+      link_to 'Hide Tasks', hide_tasks_for_project_path(@project), method: :update
+    else
+      link_to 'Show Tasks', display_tasks_for_project_path(@project), method: :update
+    end
+    %>
+    </button>
+
 <% if @project.klasses.any? %>
 <%= render 'projects/partials/latest_figures' %>
 <br>
