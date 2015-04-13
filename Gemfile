@@ -20,6 +20,10 @@ gem 'pry', group: :development
 
 gem 'devise'
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end
+
 
 gem 'chartkick'
 gem 'groupdate'

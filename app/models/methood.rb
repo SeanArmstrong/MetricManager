@@ -4,6 +4,7 @@ class Methood < ActiveRecord::Base
   has_many :method_result_sets
 
   validates_presence_of :klass
+  validates_presence_of :name
 
   def set_tasks_to_hidden
     self.display_tasks = false

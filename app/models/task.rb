@@ -2,6 +2,7 @@ class Task < ActiveRecord::Base
   belongs_to :project
 
   validates :name, length: { minimum: 3, maximum: 20 }, presence: true
+  validates :project, presence: true
   validates :description, length: { maximum: 100 }
   validates :due_date, presence: true
   validates :start_date, presence: true
