@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
       set_task_info
       respond_with(@project)
     else
+      flash[:notice] = "Could not find Project"
       redirect_to root_path
     end
   end
@@ -23,6 +24,10 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    if @project.nil?
+      flash[:notice] = "Could not find Project"
+      redirect_to root_path
+    end
   end
 
   def create

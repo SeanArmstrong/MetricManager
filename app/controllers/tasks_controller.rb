@@ -12,6 +12,8 @@ class TasksController < ApplicationController
   def show
     if @task.present?
       respond_with(@project, @task)
+    else
+      redirect_to project_path(@project)
     end
   end
 
@@ -29,7 +31,7 @@ class TasksController < ApplicationController
     unless @task.complete
       @task.completed_at = nil
     end
-    flash[:notice] = 'Task was successfully created.' if @task.save
+    flash[:success] = 'Task was successfully created.' if @task.save
     respond_with(@project, @task)
   end
 
@@ -70,7 +72,7 @@ class TasksController < ApplicationController
 
   private
     def set_task
-      @task = @project.tasks.find(params[:id])
+      @task = @project.tasks.find_by_id(params[:id])
     end
 
     def set_project
