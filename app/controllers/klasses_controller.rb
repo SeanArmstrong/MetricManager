@@ -1,4 +1,6 @@
 class KlassesController < ApplicationController
+  before_action :set_project, except: [:hidetasks, :displaytasks]
+
   before_action :set_klass, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -12,6 +14,12 @@ class KlassesController < ApplicationController
     if @klass.present?
       set_task_info
       respond_with(@klass)
+    else
+      if @project
+        redirect_to project_path(@project)
+      else
+        redirect_to root_path
+      end
     end
   end
 
@@ -53,7 +61,13 @@ class KlassesController < ApplicationController
 
   private
     def set_klass
-      @klass = current_user.projects.find_by_id(params[:pid]).klasses.find_by_id(params[:kid])
+      if @project
+        @klass = @project.klasses.find_by_id(params[:kid])
+      end
+    end
+
+    def set_project
+      @project = current_user.projects.find_by_id(params[:pid])
     end
 
     def klass_params
