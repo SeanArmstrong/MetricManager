@@ -29,3 +29,4 @@ describe KlassesController do
   end
 
   #No routes
+end

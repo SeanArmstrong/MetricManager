@@ -18,3 +18,4 @@ describe MethoodsController do
 
     sign_in @user1
   end
+end
